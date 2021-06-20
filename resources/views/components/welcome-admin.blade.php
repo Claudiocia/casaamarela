@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
                     <h1 data-aos="fade-up">Parabéns, você já deu o primeiro passo para construir uma UNEB mais moderna, inclusiva e democrática!</h1>
-                    <h2 data-aos="fade-up" data-aos-delay="400">Você já está logado em nosso sistema, como ADM. Agora mande a sua contribuição</h2>
+                    <h2 data-aos="fade-up" data-aos-delay="400">Você já está logado em nosso sistema. Agora mande a sua contribuição</h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="text-center text-lg-start">
                             <a href="{{route('contribuis.create')}}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
