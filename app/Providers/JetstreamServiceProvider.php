@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\Jetstream\DeleteUser;
-use App\Forms\UserFormEdit;
+use App\Forms\UserForm;
 use App\Http\Middleware\JetstreamMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +37,7 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configureRoutes();
 
         Fortify::registerView(function (){
-            $form = \FormBuilder::create(UserFormEdit::class, [
+            $form = \FormBuilder::create(UserForm::class, [
                 'url' => route('register'),
                 'method' => 'POST'
             ]);
