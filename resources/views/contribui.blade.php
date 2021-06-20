@@ -8,8 +8,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center" style="margin-top: 50px">
-                    <h5 data-aos="fade-up">Para contribuir envie o formulário abaixo com sua ideia, limitada a 500 caracteres!</h5>
                     @if(Auth::guest())
+                        <h5 data-aos="fade-up">Para contribuir envie o formulário abaixo com sua ideia, limitada a 500 caracteres!</h5>
                     <h6 data-aos="fade-up" data-aos-delay="400" class="bg-danger aviso">Se você quer contribuir com um texto maior faça seu cadastro <a href="{{route('register')}}" style="text-decoration: underline; color: white"> AQUI </a></h6>
                     <h6 data-aos="fade-up" data-aos-delay="400">Os campos com * são obrigatórios</h6>
                     <div data-aos="fade-up" data-aos-delay="600">
@@ -61,6 +61,7 @@
                                 </div>
                             </form>
                         @else
+                            <h5 data-aos="fade-up">Para contribuir envie o formulário abaixo com sua ideia!</h5>
                             <div data-aos="fade-up" data-aos-delay="600">
                                 <x-jet-validation-errors class="mb-4" />
                             <form action="{{route('contribuis.store')}}" method="POST">
