@@ -1,4 +1,4 @@
-@extends('layouts.excms')
+@extends('layouts.casaamarela')
 
 @section('conteudo')
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
@@ -22,9 +22,6 @@
                                         'label' => $icon.' Salvar'
                                         ]))
                                  !!}
-                            </div>
-                            <div class="row btn-new-reset">
-                                {!! Button::primary('Voltar')->asLinkTo(route('admin.users.index')) !!}
                             </div>
                         </div>
                         </div>

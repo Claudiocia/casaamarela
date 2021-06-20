@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Forms\UserForm;
-use App\Models\Campus;
-use App\Models\Departamento;
+use App\Forms\UserFormEdit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,7 +77,13 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $form = FormBuilder::create(UserFormEdit::class, [
+            'url' => route('admin.users.update', ['user' => $user->id]),
+            'method' => 'PUT',
+            'model' => $user,
+        ]);
+
+        return view('admin.users.edit', compact('form'));
     }
 
     /**
@@ -90,7 +95,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $data = $request->all();
+        $user->fill($data);
+        $user->save();
+        $request->session()->flash('msg', 'Usuário atualizado com sucesso');
+        return redirect()->route('admin.users.index');
     }
 
     /**
