@@ -10,10 +10,6 @@
                     </a>
                     <p>Um Espaço para o debate sobre o ensino superior gratuito e de qualidade. Veja como participar</p>
                     <div class="social-links mt-3">
-                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
-                        <a href="#" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
                     </div>
                 </div>
 
@@ -21,17 +17,26 @@
                     <h4>Links</h4>
                     @if(Auth::guest())
                         <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Participar</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Contato</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Cadastro</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Login</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{route('contribuis.create')}}">Participar</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{route('contacts.create')}}">Contato</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('register') }}#cadastro">Cadastro</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('login') }}">Login</a></li>
                         </ul>
                     @else
                         <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Participar</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Contato</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Logout</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{route('dashboard')}}">Home</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{route('contribuis.create')}}">Participar</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{route('contacts.create')}}">Contato</a></li>
+                            <li><i class="bi bi-chevron-right"></i>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                         onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                        {{ __('Logout') }}
+                                    </x-jet-dropdown-link>
+                                </form></li>
                         </ul>
                     @endif
                 </div>

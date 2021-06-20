@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       /* $municipios[] = array(
+        $municipios[] = array(
             array('nome' =>  'Abaíra'),
             array('nome' =>  'Abaré'),
             array('nome' =>  'Acajutiba'),
@@ -467,6 +467,23 @@ class DatabaseSeeder extends Seeder
             array('nome' => 'Campus XXII'),
             array('nome' => 'Campus XXIII'),
             array('nome' => 'Campus XXIV'),
+            array('nome' => 'CPEDR'),
+            array('nome' => 'CEEC'),
+            array('nome' => 'CEPAIA'),
+            array('nome' => 'CPT'),
+            array('nome' => 'CEL-FM'),
+            array('nome' => 'CESDE'),
+            array('nome' => 'CAAPA'),
+            array('nome' => 'CDTA'),
+            array('nome' => 'CASULO'),
+            array('nome' => 'CEESAR'),
+            array('nome' => 'OPARÁ'),
+            array('nome' => 'CEGRES/DIADORIM'),
+            array('nome' => 'CEICR'),
+            array('nome' => 'CEPITI'),
+            array('nome' => 'CAECDT'),
+            array('nome' => 'CRDH'),
+            array('nome' => 'CPDCV'),
         );
 
         foreach ($campuses as $campus){
@@ -633,17 +650,69 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password'=> bcrypt('91316445'),
                 'matricula' => '925294',
-                'tipo' => 'Coordenador',
+                'tipo' => 't',
                 'role' => User::ROLE_ADMIN,
-                'genero' => 'Masculino',
+                'genero' => 'm',
                 'nome_social' => 'Claudio Souza',
-                'raca' => 'branco',
+                'raca' => 'brt',
                 'celular' => '71999094687',
                 'municipio_id' => 336,
                 'campus_id' => 4,
                 'departamento_id' => 1,
                 'autoriz' => 's',
             ),
+            array(
+                'name' => 'Staff Teste',
+                'email' => 'stafteste@user.com',
+                'email_verified_at' => now(),
+                'password'=> bcrypt('91316445'),
+                'matricula' => '925295',
+                'tipo' => 'p',
+                'role' => User::ROLE_STAFF,
+                'genero' => 'f',
+                'nome_social' => 'Staff Teste',
+                'raca' => 'prt',
+                'celular' => '71999094688',
+                'municipio_id' => 336,
+                'campus_id' => 4,
+                'departamento_id' => 1,
+                'autoriz' => 's',
+            ),
+            array(
+                'name' => 'Redat Teste',
+                'email' => 'redatteste@user.com',
+                'email_verified_at' => now(),
+                'password'=> bcrypt('91316445'),
+                'matricula' => '925296',
+                'tipo' => 'p',
+                'role' => User::ROLE_REDAT,
+                'genero' => 'm',
+                'nome_social' => 'Redat Teste',
+                'raca' => 'brt',
+                'celular' => '71999094689',
+                'municipio_id' => 336,
+                'campus_id' => 4,
+                'departamento_id' => 1,
+                'autoriz' => 's',
+            ),
+            array(
+                'name' => 'Aluno Teste',
+                'email' => 'alunoteste@user.com',
+                'email_verified_at' => now(),
+                'password'=> bcrypt('91316445'),
+                'matricula' => '925297',
+                'tipo' => 'a',
+                'role' => User::ROLE_CLIENTE,
+                'genero' => 'f',
+                'nome_social' => 'Aluno Teste',
+                'raca' => 'prt',
+                'celular' => '71999094690',
+                'municipio_id' => 336,
+                'campus_id' => 4,
+                'departamento_id' => 3,
+                'autoriz' => 's',
+            ),
+
         );
         foreach ($userAdmin as $user) {
             DB::table('users')->insert($user);
@@ -653,7 +722,7 @@ class DatabaseSeeder extends Seeder
             array(
                 'name' => 'Graduação',
                 'sigla' => 'Grad',
-                'introd' => 'Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem',
+                'introd' => 'Dimensão que se refere ao objeto central da UNEB, que engloba os cursos de graduação. Não por acaso está listada como primeira, mostrando a importância merecida',
                 'user_id' => 1,
                 ),
             array(
@@ -728,11 +797,17 @@ class DatabaseSeeder extends Seeder
                 'introd' => 'Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem',
                 'user_id' => 1,
             ),
+            array(
+                'name' => 'Tecnologia e Conectividade',
+                'sigla' => 'TecCon',
+                'introd' => 'Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem',
+                'user_id' => 1,
+            ),
         );
 
         foreach ($dimensions as $dimension) {
             DB::table('dimensions')->insert($dimension);
-        } */
+        }
 
         $eixos[] = array(
             array(

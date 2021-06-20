@@ -72,10 +72,9 @@ class UserForm extends Form
                 ],
             ])
             ->add('matricula', 'text', [
-                'label' => 'Matrícula*',
+                'label' => 'Matrícula',
                 'attr' => [
                     'class' => 'text_linha',
-                    'required' => 'required',
                 ],
             ])
             ->add('raca', 'choice', [
@@ -94,7 +93,7 @@ class UserForm extends Form
                 'expanded' => true,
             ])
             ->add('municipio_id', 'choice', [
-                'label' => 'Municipio*',
+                'label' => 'Municipio de Vinculação Institucional*',
                 'label_attr' => ['class' => 'control-label required'],
                 'choices' => Municipio::orderBy('nome', 'ASC')->pluck('nome', 'id')->toArray(),
                 'choice_options' => [
@@ -107,7 +106,7 @@ class UserForm extends Form
                 'expanded' => false,
             ])
             ->add('campus_id', 'choice', [
-                'label' => 'Campus / Pólo *',
+                'label' => 'Campus / Pólo / Centros *',
                 'label_attr' => ['class' => 'control-label required'],
                 'choices' => Campus::orderBy('nome', 'ASC')->pluck('nome', 'id')->toArray(),
                 'choice_options' => [
@@ -120,7 +119,7 @@ class UserForm extends Form
                 'expanded' => false,
             ])
             ->add('departamento_id', 'choice', [
-                'label' => 'Departamento',
+                'label' => 'Departamento*',
                 'label_attr' => ['class' => 'control-label required'],
                 'choices' => Departamento::orderBy('nome', 'ASC')->pluck('sigla', 'id')->toArray(),
                 'choice_options' => [
@@ -148,7 +147,7 @@ class UserForm extends Form
             ->add('mod_curso', 'choice', [
                 'label' => 'Curso Modalidade',
                 'label_attr' => ['class' => 'control-label'],
-                'choices' => ['pres' => 'Presencial', 'semi_pres' => 'Semi-Presencial', 'ead' => 'EAD'],
+                'choices' => ['pres' => 'Presencial', 'ead' => 'EAD'],
                 'choice_options' => [
                     'wrapper' => ['class' => 'choice-wrapper'],
                     'label_attr' => ['class' => 'label-class'],

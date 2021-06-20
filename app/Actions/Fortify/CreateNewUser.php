@@ -34,7 +34,6 @@ class CreateNewUser implements CreatesNewUsers
             'curso_id' => $input['tipo'] == 'a' ? ['required'] : [],
             'mod_curso' => $input['tipo'] == 'a' ? ['required'] : [],
             'tipo_curso' => $input['tipo'] == 'a' ? ['required'] : [],
-            'matricula' => ['required', 'unique:users'],
             'autoriz' => ['required'],
         ],
         [
@@ -43,7 +42,6 @@ class CreateNewUser implements CreatesNewUsers
             'raca.required' => 'Favor selecionar a Identidade Racial',
             'municipio_id.required' => 'Favor selecionar o seu município',
             'campus_id.required' => 'Favor selecionar o Campus ou Pólo que você atua',
-            'matricula.required' => 'Favor informar a sua matrícula na UNEB',
             'matricula.unique' => 'Já existe um cadastro com esta matrícula',
             'departamento_id.required' => 'Favor informar o Departamento',
             'curso_id.required' => 'O nome do curso é obrigatório para o segmento Discente',

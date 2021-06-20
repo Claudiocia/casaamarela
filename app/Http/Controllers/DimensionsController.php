@@ -14,7 +14,7 @@ class DimensionsController extends Controller
      */
     public function index()
     {
-        //
+        return view('redat.dimensions.index');
     }
 
     /**

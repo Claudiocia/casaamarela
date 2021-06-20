@@ -22,9 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('genero');
             $table->string('celular')->unique();
             $table->string('raca')->nullable();
-            $table->string('matricula')->unique();
+            $table->string('matricula')->nullable();
             $table->string('tipo');
-            $table->string('role')->default(2);
+            $table->string('role')->default(4);
             $table->string('mod_curso')->nullable();
             $table->string('tipo_curso')->nullable();
             $table->enum('apoiador', [ 's', 'n'])->default('n');

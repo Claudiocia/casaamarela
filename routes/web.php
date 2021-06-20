@@ -33,14 +33,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group([
-    'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'can:admin'
+    'prefix' => 'unico', 'as' => 'unico.', 'middleware' => 'can:unico'
 ], function(){
-    Route::get('contacts/index', [ContactsController::class, 'index'])->name('contacts.index');
-    Route::get('contacts/{contact}', [ContactsController::class, 'show'])->name('contacts.show');
-    Route::get('contacts/{contact}/edit', [ContactsController::class, 'edit'])->name('contacts.edit');
-    Route::put('contacts/{contact}', [ContactsController::class, 'update'])->name('contacts.update');
-    Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])->name('contacts.destroy');
-    Route::resource('users', UsersController::class);
+
 });
 
 Route::group([
@@ -51,4 +46,15 @@ Route::group([
     Route::get('contribuis/index', [ContribuisController::class, 'index'])->name('contribuis.index');
     Route::get('contribuis/{contribui}', [ContribuisController::class, 'show'])->name('contribuis.show');
     Route::delete('contribuis/{contribui}', [ContribuisController::class, 'destroy'])->name('contribuis.destroy');
+});
+
+Route::group([
+    'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'can:admin'
+], function (){
+    Route::get('contacts/index', [ContactsController::class, 'index'])->name('contacts.index');
+    Route::get('contacts/{contact}', [ContactsController::class, 'show'])->name('contacts.show');
+    Route::get('contacts/{contact}/edit', [ContactsController::class, 'edit'])->name('contacts.edit');
+    Route::put('contacts/{contact}', [ContactsController::class, 'update'])->name('contacts.update');
+    Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])->name('contacts.destroy');
+    Route::resource('users', UsersController::class);
 });

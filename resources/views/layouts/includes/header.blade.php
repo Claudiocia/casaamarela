@@ -53,7 +53,7 @@
         @if(Auth::guest())
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto" href="{{route('/')}}#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="{{route('/')}}">Home</a></li>
                 <li><a class="nav-link scrollto" href="{{route('contribuis.create')}}">Participar</a> </li>
                 <li><a class="nav-link scrollto" href="{{route('contacts.create')}}">Contato</a></li>
                 <li><a href="{{ route('register') }}#cadastro">Cadastro</a></li>
@@ -67,13 +67,23 @@
                     <li><a class="nav-link scrollto" href="{{route('dashboard')}}#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="{{route('contacts.create')}}">Contato</a></li>
                     <li><a class="nav-link scrollto" href="{{route('contribuis.create')}}">Participar</a> </li>
-                    <li><a class="nav-link scrollto" href="#">Dimensões</a></li>
-                    @if(Auth::user()->role == 3 || Auth::user()->role == 1)
+                    @if(Auth::user()->role == 1 || Auth::user()->role == 2)
+                        <li class="dropdown"><a href="#"><span>Admin</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a class="nav-link scrollto" href="{{route('redat.dimensions.index')}}">Dimensões</a></li>
+                                <li><a class="nav-link scrollto" href="{{route('admin.users.index')}}">Usuários</a></li>
+                                <li><a class="nav-link scrollto" href="#">Lideres</a></li>
+                            </ul>
+                        </li>
                         <li><a class="nav-link scrollto" href="{{route('redat.contribuis.index')}}">Contribuições</a></li>
                         <li><a class="nav-link scrollto" href="{{route('admin.contacts.index')}}">Mensagens</a></li>
-                    @elseif(Auth::user()->role == 1)
-                        <li><a class="nav-link scrollto" href="{{route('admin.users.index')}}">Usuários</a></li>
-                        <li><a class="nav-link scrollto" href="#">Lideres</a></li>
+                    @elseif(Auth::user()->role == 3)
+                        <li class="dropdown"><a href="#"><span>Edição</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a class="nav-link scrollto" href="{{route('dashboard')}}">Dimensões</a></li>
+                                <li><a class="nav-link scrollto" href="#">Eixos</a></li>
+                                <li><a class="nav-link scrollto" href="{{route('redat.contribuis.index')}}">Contribuições</a></li>
+                            </ul>
                     @endif
                     <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-right"></i></a>
                         <ul>

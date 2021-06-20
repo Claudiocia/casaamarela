@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Forms\UserForm;
+use App\Models\Campus;
+use App\Models\Departamento;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\Facades\FormBuilder;
 
 class UsersController extends Controller
@@ -18,14 +21,16 @@ class UsersController extends Controller
     {
         $search = $request->get('search');
         $filter = $request->get('filter');
-
-        if ($search == null){
+        $role = Auth::user()->role;
+        if($role == 1){
             $users = User::orderBy('name', 'ASC')->paginate(10);
             return view('admin.users.index', compact('users'));
         }else{
-            $users = User::where('name', 'LIKE', '%'.$search.'%')->orderBy('name', 'ASC')->paginate(10);
+            $users = User::whereIn('role', [2, 3, 4])->orderBy('name', 'ASC')->paginate(10);
             return view('admin.users.index', compact('users'));
         }
+
+
     }
 
     /**

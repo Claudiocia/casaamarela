@@ -9,48 +9,8 @@
                     <div class="w-auto p-3">
                         <div class="panel-heading-admin">
                             <h5>Lista de usuários</h5>
-                            <div class="form-search">
-                                <form action="{{ route('admin.users.index') }}" method="get">
-                                    <div class="col-lg-5">
-                                        <label class="control-label">Filters</label>
-                                    </div>
-                                    <div class="col-md-11 col-md-offset-1">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="filter" id="filterCampus" value="1">
-                                            <label class="form-check-label" for="filterCampus">Campus</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="filter" id="filterDepart" value="2">
-                                            <label class="form-check-label" for="filterDepart">Depart</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="filter" id="filterDiscente" value="3">
-                                            <label class="form-check-label" for="filterDiscente">Discente</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="filter" id="filterTec" value="4">
-                                            <label class="form-check-label" for="filterTec">Tecnico</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="filter" id="filterDocente" value="5">
-                                            <label class="form-check-label" for="filterDocente">Docente</label>
-                                        </div>
-                                    </div>
-                                    <label class="label-search">Pesquisar</label>
-                                    <x-jet-input id="search" class="mt-1 w-full" type="search" name="search"/>
-                                    <div class="buton-search">
-                                    <x-jet-button class="ml-4 buton-sch">
-                                         {{ __('Pesquisar') }}
-                                    </x-jet-button>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                         <div class="panel-body">
-                            <div class="row btn-new-reset">
-                                {!! Button::primary('Novo')->asLinkTo(route('admin.users.create')) !!}
-                                {!! Button::primary('Limpar')->asLinkTo(route('admin.users.index')) !!}
-                            </div>
                             <div class="row" style="margin-left: 10px; margin-right: 10px;">
                                 {!!
                                     Table::withContents($users)->striped()
