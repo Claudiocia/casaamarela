@@ -15,8 +15,15 @@ class ContribuisController extends Controller
      */
     public function index(Request $request)
     {
-        $contribuis = Contribui::orderBy('lida', 'DESC')->paginate(7);
-        return view('redat.contribuis.index', compact('contribuis'));
+        $search = $request->get('search');
+        if($search == null){
+            $contribuis = Contribui::orderBy('lida', 'DESC')->paginate(7);
+            return view('redat.contribuis.index', compact('contribuis'));
+        }else{
+            $contribuis = Contribui::where('contribui', 'LIKE', '%'.$search.'%')->paginate(7);
+            return view('redat.contribuis.index', compact('contribuis'));
+        }
+
     }
 
     /**

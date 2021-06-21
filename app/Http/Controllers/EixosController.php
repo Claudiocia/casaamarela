@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\EixosForm;
 use App\Models\Eixo;
 use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\Form;
 
 class EixosController extends Controller
 {
@@ -46,7 +48,7 @@ class EixosController extends Controller
      */
     public function show(Eixo $eixo)
     {
-        //
+        return view('redat.eixos.show', compact('eixo'));
     }
 
     /**
@@ -57,7 +59,14 @@ class EixosController extends Controller
      */
     public function edit(Eixo $eixo)
     {
-        //
+        $form = \FormBuilder::create(EixosForm::class, [
+            'url' => route('redat.eixos.update', ['eixo' => $eixo->id]),
+            'method' => 'PUT',
+            'model' => $eixo,
+            'data' => ['id' => $eixo->id],
+        ]);
+
+        return view('redat.eixos.edit', compact('form', 'eixo'));
     }
 
     /**
@@ -65,11 +74,25 @@ class EixosController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Eixo  $eixo
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function update(Request $request, Eixo $eixo)
     {
-        //
+        /** @var Form $form */
+        $form = \FormBuilder::create(EixosForm::class);
+
+        if (!$form->isValid()){
+            return redirect()
+                ->back()
+                ->withErrors($form->getErrors())
+                ->withInput();
+        }
+        $data = $form->getFieldValues();
+        $eixo->fill($data);
+        $eixo->save();
+
+        $request->session()->flash('msg', 'Eixo '.$eixo->name.' da dimensão '.$eixo->dimension->name.' atualizado com sucesso!');
+        return redirect()->route('redat.dimensions.index');
     }
 
     /**

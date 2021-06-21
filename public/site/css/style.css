@@ -2557,3 +2557,21 @@ section {
     color: white;
     padding: 5px;
 }
+.texto-intro{
+    background: #FFFFFF;
+    border: solid 0.5pt #0b6bd3;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.choice-wrapper-my{
+    display: inline !important;
+}
+.choice-wrapper-my .form-control {
+    height: 0.8em !important;
+    display: inline !important;
+    margin-left: 10px;
+    width: 1em;
+}

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\DimensionForm;
 use App\Models\Dimension;
+use App\Models\Eixo;
 use Illuminate\Http\Request;
 
 class DimensionsController extends Controller
@@ -57,7 +59,14 @@ class DimensionsController extends Controller
      */
     public function edit(Dimension $dimension)
     {
-        //
+        $form = \FormBuilder::create(DimensionForm::class, [
+            'url' => route('redat.dimensions.update', [ 'dimension' => $dimension->id]),
+            'method' => 'PUT',
+            'model' => $dimension,
+            'data' => ['id' => $dimension->id],
+        ]);
+
+        return view('redat.dimensions.edit', compact('form'));
     }
 
     /**
@@ -69,7 +78,12 @@ class DimensionsController extends Controller
      */
     public function update(Request $request, Dimension $dimension)
     {
-        //
+        $data = $request->all();
+        $dimension->fill($data);
+        $dimension->save();
+
+        $request->session()->flash('msg', 'Dimensão atualizada com sucesso!');
+        return redirect()->route('redat.dimensions.index');
     }
 
     /**

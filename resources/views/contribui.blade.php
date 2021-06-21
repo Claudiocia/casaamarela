@@ -47,6 +47,7 @@
                                             <option @if(old('tema') == 'Assistência Estudantil') {{'selected="selected"'}} @endif>Assistência Estudantil</option>
                                             <option @if(old('tema') == 'Resp. Social e Ações Afirmativas') {{'selected="selected"'}} @endif>Resp. Social e Ações Afirmativas</option>
                                             <option @if(old('tema') == 'Comunicação e Cultura') {{'selected="selected"'}} @endif>Comunicação e Cultura</option>
+                                            <option @if(old('tema') == 'Tecnologia e Conectividade') {{'selected="selected"'}} @endif>Tecnologia e Conectividade</option>
                                         </select>
                                     </div>
 
@@ -96,6 +97,7 @@
                                             <option @if(old('tema') == 'Assistência Estudantil') {{'selected="selected"'}} @endif>Assistência Estudantil</option>
                                             <option @if(old('tema') == 'Resp. Social e Ações Afirmativas') {{'selected="selected"'}} @endif>Resp. Social e Ações Afirmativas</option>
                                             <option @if(old('tema') == 'Comunicação e Cultura') {{'selected="selected"'}} @endif>Comunicação e Cultura</option>
+                                            <option @if(old('tema') == 'Tecnologia e Conectividade') {{'selected="selected"'}} @endif>Tecnologia e Conectividade</option>
                                         </select>
                                     </div>
 
