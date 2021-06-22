@@ -1,7 +1,7 @@
 @extends('layouts.casaamarela')
 
 @section('conteudo')
-<div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+<div class="p-6 sm:px-20 bg-white border-b border-gray-200" style="margin-top: 80px;">
     <div id="admin-content">
         <div class="container-admin">
             <div class="row">
@@ -11,7 +11,7 @@
                             <h5>Perfil do usuário {{ $user->name }}</h5>
                         </div>
                         <div class="panel-body">
-                            <div class="row btn-new-reset">
+                            <div class="row btn-new-reset" style="margin-bottom: 15px;">
                                 {!! Button::primary('Voltar')->asLinkTo(route('admin.users.index')) !!}
                                 {!! Button::primary('Editar')->asLinkTo(route('admin.users.edit', ['user' => $user->id])) !!}
                                 {!! Button::danger('Delete')
@@ -29,22 +29,22 @@
                             <div class="row">
                                 <div id="register-show">
                                     <div class="row bloco-div-show desk">
-                                        <div class="nome">
+                                        <div>
                                             <h6 class="block font-medium text-sm text-gray-700 label-show">Nome</h6>
-                                            <div class="texto-show">
-                                                {{ $user->name }}
+                                            <div class="quem-show">
+                                                {!! $user->name !!}
                                             </div>
                                         </div>
-                                        <div class="nome">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Nome Social</h6>
-                                            <div class="texto-show">
-                                                {{ $user->nome_social }}
-                                            </div>
-                                        </div>
-                                        <div class="nome">
+                                        <div>
                                             <h6 class="block font-medium text-sm text-gray-700 label-show">E-mail</h6>
-                                            <div class="texto-show">
-                                                {{ $user->email }}
+                                            <div class="quem-show">
+                                                {!! $user->email." - " !!} {{ $user->autoriz == 's'? 'Autoriza envio de e-mail' : 'Não autoriza envio de e-mail' }}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Nome Social</h6>
+                                            <div class="quem-show">
+                                                {!! $user->nome_social !!}
                                             </div>
                                         </div>
                                         <div class="nome">
@@ -53,15 +53,13 @@
                                                 {{ $user->celular }}
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row bloco-div-show desk">
-                                        <div class="nome dt-nasc">
+                                        <div class="nome">
                                             <h6 class="block font-medium text-sm text-gray-700 label-show">Matrícula</h6>
                                             <div class="texto-show">
                                                 {{ $user->matricula }}
                                             </div>
                                         </div>
-                                        <div class="nome dt-nasc">
+                                        <div class="nome">
                                             <h6 class="block font-medium text-sm text-gray-700 label-show">Identidade de Genero</h6>
                                             <div class="texto-show">
                                                 @switch($user->genero)
@@ -71,73 +69,160 @@
                                                     @case('f')
                                                     Feminino
                                                     @break
+                                                    @case('nb')
+                                                    Não Binário
+                                                    @break
+                                                    @case('htg')
+                                                    Homem Transgênero
+                                                    @break
+                                                    @case('mtg')
+                                                    Mulher Transgênero
+                                                    @break
+                                                    @case('hts')
+                                                    Homem Transexual
+                                                    @break
+                                                    @case('mts')
+                                                    Mulher Transexual
+                                                    @break
+                                                    @case('cis')
+                                                    Cisgênero
+                                                    @break
+                                                    @case('nsr')
+                                                    Não sei responder
+                                                    @break
+                                                    @case('pnr')
+                                                    Prefiro não responder
+                                                    @break
+                                                    @case('out')
+                                                    Outros
+                                                    @break
+                                                @endswitch
+                                            </div>
+                                        </div>
+                                        <div class="nome">
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Identidade Racial</h6>
+                                            <div class="texto-show">
+                                                @switch($user->raca)
+                                                    @case('afd')
+                                                    Afro-Descendente
+                                                    @break
+                                                    @case('ind')
+                                                    Indigena
+                                                    @break
+                                                    @case('amare')
+                                                    Amarelo
+                                                    @break
+                                                    @case('ngr')
+                                                    Negro
+                                                    @break
+                                                    @case('brc')
+                                                    Branco
+                                                    @break
+                                                    @case('prt')
+                                                    Preto
+                                                    @break
+                                                    @case('prd')
+                                                    Pardo
+                                                    @break
+                                                    @case('nsr')
+                                                    Não sei responder
+                                                    @break
+                                                    @case('prn')
+                                                    Prefiro não responder
+                                                    @break
+                                                    @case('out')
+                                                    Outros
+                                                    @break
+                                                @endswitch
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row bloco-div-show desk">
+                                        <div class="nome dt-nasc">
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Segmento</h6>
+                                            <div class="texto-show">
+                                                @switch($user->tipo)
+                                                    @case('a')
+                                                    Discente
+                                                    @break
+                                                    @case('t')
+                                                    Técnico
+                                                    @break
+                                                    @case('p')
+                                                    Docente
+                                                    @break
                                                 @endswitch
                                             </div>
                                         </div>
                                         <div class="nome dt-nasc">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Associado?</h6>
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Status</h6>
                                             <div class="texto-show">
-                                                {{ $user->matricula }}
+                                                @switch($user->role)
+                                                    @case(1)
+                                                    Administrador
+                                                    @break
+                                                    @case(2)
+                                                    Staff
+                                                    @break
+                                                    @case(3)
+                                                    Redator
+                                                    @break
+                                                    @case(4)
+                                                    Cadastrado
+                                                    @break
+                                                @endswitch
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row bloco-div-show desk">
+                                        <hr/>
+                                        <div>
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Campus / Depart</h6>
+                                            <div class="quem-show">
+                                                {!! $user->campus->nome." / ".$user->departamento->nome." - ".$user->departamento->sigla !!}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Município</h6>
+                                            <div class="quem-show">
+                                                {!! $user->municipio->nome !!}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Curso</h6>
+                                            <div class="quem-show">
+                                                @if($user->curso_id == null)
+                                                    Sem curso
+                                                @else
+                                                {{ $user->curso->nome }}
+                                                @endif
+                                            </div>
+                                        </div>
                                         <div class="nome dt-nasc">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Ex-Aluno?</h6>
-
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Modalidade</h6>
                                             <div class="texto-show">
-                                                 Sim
+                                                @if($user->mod_curso == 'pres')
+                                                    Presencial
+                                                @elseif($user->mod_curso == 'ead')
+                                                    EAD
+                                                @endif
                                             </div>
-
                                         </div>
                                         <div class="nome dt-nasc">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Telefone</h6>
-                                                <div class="texto-show">
-                                                    {{ $user->celular }}
-                                                </div>
-                                        </div>
-                                        <div class="nome dt-nasc">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">RG</h6>
-
-                                                <div class="texto-show">
-                                                 Não informado
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <hr/>
-                                    <div class="row bloco-div-show desk">
-                                        <div class="nome">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Endereço</h6>
+                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Tipo</h6>
                                             <div class="texto-show">
-                                                {{ $user->matricula }}
-                                            </div>
-                                        </div>
-                                        <div class="nome">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Complemento</h6>
-                                            <div class="texto-show">
-                                                {{ $user->matricula }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row bloco-div-show desk" style="justify-content: left !important;">
-                                        <div class="nome">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Bairro</h6>
-                                            <div class="texto-show">
-                                                {{ $user->matricula }}
-                                            </div>
-                                        </div>
-                                        <div class="nome dt-nasc rd_soc" style="margin-left: 35px !important;">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">CEP</h6>
-                                            <div class="texto-show">
-                                                {{ $user->matricula }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row bloco-div-show desk">
-                                        <div class="nome endere">
-                                            <h6 class="block font-medium text-sm text-gray-700 label-show">Cidade</h6>
-                                            <div class="texto-show">
-                                                {{ $user->matricula }}
+                                                @switch($user->tipo_curso)
+                                                    @case('bach')
+                                                    Bacharelado
+                                                    @break
+                                                    @case('tec')
+                                                    Tecnólogo
+                                                    @break
+                                                    @case('lic')
+                                                    Licenciatura
+                                                    @break
+                                                    @case('pos')
+                                                    Pós-Graduação
+                                                    @break
+                                                @endswitch
                                             </div>
                                         </div>
                                     </div>

@@ -11,14 +11,14 @@
                             <h5>Editar Usuário</h5>
                         </div>
                         <div class="panel-body">
-                            <div class="row btn-new-reset">
+                            <div class="row btn-new-reset" style="margin-left: 20px;">
                                 {!! Button::primary('Voltar')->asLinkTo(route('admin.users.index')) !!}
                             </div>
                             <div class="form-admin">
                                 <?php $icon = '<i class="fas fa-save"></i>'; ?>
                                 {!!
                                     form($form->add('salvar', 'submit', [
-                                        'attr' => ['class' => 'btn btn-primary btn-block', 'style' => 'width:120px'],
+                                        'attr' => ['class' => 'btn btn-primary btn-block', 'style' => 'width:120px; margin-top:15px;'],
                                         'label' => $icon.' Salvar'
                                         ]))
                                  !!}

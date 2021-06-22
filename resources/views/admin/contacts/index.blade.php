@@ -18,10 +18,8 @@
                                 {!!
                                     Table::withContents($contacts)->striped()
                                     ->callback('Actions', function ($field, $contact){
-                                        $linkEdit = route('admin.contacts.edit', ['contact' => $contact->id]);
                                         $linkShow = route('admin.contacts.show', ['contact' => $contact->id]);
-                                        return Button::LINK('<i class="fas fa-pencil-alt"></i>')->asLinkTo($linkEdit)." | ".
-                                        Button::LINK('<i class="fas fa-eye"></i>')->asLinkTo($linkShow);
+                                        return Button::LINK('<i class="fas fa-eye"></i>')->asLinkTo($linkShow);
                                     })
                                 !!}
                             </div>

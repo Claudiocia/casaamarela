@@ -16,11 +16,19 @@ class ContribuisController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        if($search == null){
+        $filtro = $request->get('filtro');
+
+        if($search == null && $filtro == null){
             $contribuis = Contribui::orderBy('lida', 'DESC')->paginate(7);
             return view('redat.contribuis.index', compact('contribuis'));
-        }else{
+        }elseif($search == null && $filtro != null){
+            $contribuis = Contribui::where('tema', '=', $filtro)->paginate(7);
+            return view('redat.contribuis.index', compact('contribuis'));
+        }elseif ($search != null && $filtro == null){
             $contribuis = Contribui::where('contribui', 'LIKE', '%'.$search.'%')->paginate(7);
+            return view('redat.contribuis.index', compact('contribuis'));
+        }elseif ($search != null && $filtro != null){
+            $contribuis = Contribui::where([['tema', '=', $filtro], ['contribui', 'LIKE', '%'.$search.'%']])->paginate(7);
             return view('redat.contribuis.index', compact('contribuis'));
         }
 
@@ -89,7 +97,9 @@ class ContribuisController extends Controller
      */
     public function show(Contribui $contribui)
     {
-        //
+        $contribui->lida = 's';
+        $contribui->save();
+        return view('redat.contribuis.show', compact('contribui'));
     }
 
     /**
@@ -98,9 +108,16 @@ class ContribuisController extends Controller
      * @param  \App\Models\Contribui  $contribui
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contribui $contribui)
+    public function edit(Request $request, Contribui $contribui)
     {
-        //
+        if($contribui->aprov == 'n'){
+            $contribui->aprov = 's';
+        }else{
+            $contribui->aprov = 'n';
+        }
+        $contribui->save();
+        $request->session()->flash('msg', 'Mensagem Atualizada com sucesso!');
+        return redirect()->back();
     }
 
     /**
@@ -121,8 +138,10 @@ class ContribuisController extends Controller
      * @param  \App\Models\Contribui  $contribui
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contribui $contribui)
+    public function destroy(Request $request ,Contribui $contribui)
     {
-        //
+        $contribui->delete();
+        $request->session()->flash('msg', 'Contribuição deletada com sucesso!');
+        return redirect()->route('redat.dimensions.index');
     }
 }

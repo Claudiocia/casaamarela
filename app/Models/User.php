@@ -83,7 +83,7 @@ class User extends Authenticatable implements TableInterface, MustVerifyEmail
 
     public function getTableHeaders()
     {
-        return ['Nome', 'Segmento', 'Lotação', 'Telefone'];
+        return ['Nome', 'Segmento', 'Lotação', 'Telefone', 'Status'];
     }
 
     public function getValueForHeader($header)
@@ -96,15 +96,21 @@ class User extends Authenticatable implements TableInterface, MustVerifyEmail
                     return 'Discente';
                 }elseif ($this->tipo == 't'){
                     return 'Tecnico';
-                }elseif ($this->tipo == 'p'){
-                    return 'Docente';
                 }else{
-                    return 'Coordenador';
+                    return 'Docente';
                 }
             case 'Lotação':
                 return $this->campus->nome.' - '.$this->departamento->sigla;
             case 'Telefone':
                 return $this->celular;
+            case 'Status':
+                if ($this->role == 1 || $this->role == 2){
+                    return 'Staff';
+                }elseif ($this->role == 3){
+                    return 'Redator';
+                }else{
+                    return 'Cadastrado';
+                }
         }
     }
 

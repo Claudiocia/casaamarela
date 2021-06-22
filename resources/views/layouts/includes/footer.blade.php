@@ -70,10 +70,11 @@
 <script src="{{asset('site/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
 <script src="{{asset('site/vendor/glightbox/js/glightbox.min.js')}}"></script>
 
-
 <!-- Template Main JS File -->
 <script src="{{asset('site/js/main.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -83,6 +84,16 @@
 <script type="text/javascript">
             $("#celular").mask('(00) 00000-0000');
 </script>
+<script src="{{asset('bootbox/bootbox.min.js')}}"></script>
+<script src="{{asset('bootbox/bootbox.locales.min.js')}}"></script>
+<script type="text/javascript">
+    $(document).on("click", ".show-alert", function(e) {
+        bootbox.alert("Hello world!", function() {
+            console.log("Alert Callback");
+        });
+    });
+</script>
+
 <script type="text/javascript">
     function handleInput(e) {
         var ss = e.target.selectionStart;

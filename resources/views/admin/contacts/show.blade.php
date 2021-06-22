@@ -13,7 +13,6 @@
                         <div class="panel-body">
                             <div class="row my-btn" >
                                 {!! Button::primary('Voltar')->asLinkTo(route('admin.contacts.index'))!!}
-                                {!! Button::primary('Editar')->asLinkTo(route('admin.contacts.edit', ['contact' => $contact->id])) !!}
                                 {!! Button::danger('Delete')
                                         ->asLinkTo(route('admin.contacts.destroy', ['contact' => $contact->id]))
                                         ->addAttributes(['onclick' => 'event.preventDefault();document.getElementById("form-delete").submit();'])

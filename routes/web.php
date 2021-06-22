@@ -45,6 +45,7 @@ Route::group([
     Route::resource('eixos', EixosController::class);
     Route::get('contribuis/index', [ContribuisController::class, 'index'])->name('contribuis.index');
     Route::get('contribuis/{contribui}', [ContribuisController::class, 'show'])->name('contribuis.show');
+    Route::get('contribuis/{contribui}/edit', [ContribuisController::class, 'edit'])->name('contribuis.edit');
     Route::delete('contribuis/{contribui}', [ContribuisController::class, 'destroy'])->name('contribuis.destroy');
 });
 

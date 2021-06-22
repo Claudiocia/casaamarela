@@ -2575,3 +2575,22 @@ section {
     margin-left: 10px;
     width: 1em;
 }
+
+.my-button{
+    width: 250px!important;
+}
+
+.btn-aprov{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.text-aprov{
+    color: blue;
+}
+
+.text-n-aprov{
+    color: red;
+}

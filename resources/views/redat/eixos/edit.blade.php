@@ -1,7 +1,7 @@
 @extends('layouts.casaamarela')
 
 @section('conteudo')
-<div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+<div class="p-6 sm:px-20 bg-white border-b border-gray-200" style="margin-top: 80px;">
     <div id="admin-content">
         <div class="container-admin">
             <div class="row">
