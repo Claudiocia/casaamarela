@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMailUser;
 use App\Models\Contribui;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class ContribuisController extends Controller
@@ -84,6 +86,32 @@ class ContribuisController extends Controller
         }
         //dd($data);
         Contribui::create($data);
+
+        $emailTo    = $data['email'];
+        $nome       = $data['name'];
+        $subject    = 'Contribuição Recebida';
+        $date       = now();
+
+        $mensagem  = "Olá $nome,";
+        $mensagem .= "<br/><br/>";
+        $mensagem .= "Muito obrigada por contribuir com sua opinião e/ou sugestões! Sua mensagem será encaminhada e, caso seja necessário, responderemos o mais breve possível.";
+        $mensagem .= "<br/><br/>";
+        $mensagem .= "Caso tenha mais alguma dúvida, nos contacte novamente através do nosso formulário no site";
+        $mensagem .= "<br/><br/>";
+        $mensagem .= "Esta é uma mensagem automática, por favor não responda este email!";
+        $mensagem .= "<br/>";
+
+        $mailData = [
+            'title' => 'Recebemos sua mensagem',
+            'sub-title' => $subject,
+            'mensagem' => $mensagem,
+            'url' => null,
+            'title-button' => null,
+            'date' => $date,
+        ];
+
+        Mail::to($emailTo)->send(new SendMailUser($mailData));
+
         $request->session()->flash('msg', 'Mensagem cadastrada com sucesso!');
         return redirect()->back();
 

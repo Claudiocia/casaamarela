@@ -17,29 +17,30 @@
                     </div>
 
                     <div class="col-lg-6">
+                        <x-jet-validation-errors class="mb-4" />
                         @if(Auth::guest())
                         <h6>Todos os campos são obrigatórios!</h6>
                         <form action="{{route('contacts.store')}}" method="POST">
                             @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
-                                    <input type="text" name="name" class="form-control" placeholder="Seu Nome*" required>
+                                    <input type="text" name="name" class="form-control" placeholder="Seu Nome*" value="{{old('name')}}" required>
                                 </div>
 
                                 <div class="col-md-6 ">
-                                    <input type="text" class="form-control" name="phone" placeholder="Seu telefone*" required>
+                                    <input type="text" class="form-control" name="phone" placeholder="Seu telefone*" value="{{old('phone')}}" required>
                                 </div>
 
                                 <div class="col-md-12 ">
-                                    <input type="email" class="form-control" name="email" placeholder="Seu Email*" required>
+                                    <input type="email" class="form-control" name="email" placeholder="Seu Email*" value="{{old('email')}}" required>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" name="subject" placeholder="Assunto*" required>
+                                    <input type="text" class="form-control" name="subject" placeholder="Assunto*" value="{{old('subject')}}" required>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <textarea class="form-control" name="message" rows="6" placeholder="Mensagem*" required></textarea>
+                                    <textarea class="form-control" name="message" rows="6" placeholder="Mensagem*" required>{{old('message')}}</textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                 <x-jet-button class="ml-4" style="width:40%; display: flex; justify-content: center;">
@@ -66,11 +67,11 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" name="subject" placeholder="Assunto*" required>
+                                        <input type="text" class="form-control" name="subject" placeholder="Assunto*" value="{{old('subject')}}" required>
                                     </div>
 
                                     <div class="col-md-12">
-                                        <textarea class="form-control" name="message" rows="6" placeholder="Mensagem*" required></textarea>
+                                        <textarea class="form-control" name="message" rows="6" placeholder="Mensagem*" required>{{old('message')}}</textarea>
                                     </div>
                                     <div class="d-flex justify-content-center">
                                         <x-jet-button class="ml-4" style="width:40%; display: flex; justify-content: center;">
