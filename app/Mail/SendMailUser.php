@@ -11,15 +11,17 @@ class SendMailUser extends Mailable
 {
     use Queueable, SerializesModels;
     public $mailData;
+    public $assunto;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($mailData)
+    public function __construct($mailData, $assunto)
     {
         $this->mailData = $mailData;
+        $this->assunto = $assunto;
     }
 
     /**
@@ -30,6 +32,7 @@ class SendMailUser extends Mailable
     public function build()
     {
         return $this->markdown('email.sendEmail')
+            ->subject($this->assunto)
             ->with('mailData', $this->mailData);
     }
 }

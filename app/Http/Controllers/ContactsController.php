@@ -62,6 +62,7 @@ class ContactsController extends Controller
         $emailTo    = $data['email'];
         $nome       = $data['name'];
         $subject    = $data['subject'];
+        $assunto    = 'Recebemos seu contato';
         $date       = now();
 
         $mensagem  = "Olá $nome,";
@@ -82,7 +83,7 @@ class ContactsController extends Controller
             'date' => $date,
         ];
 
-        Mail::to($emailTo)->send(new SendMailUser($mailData));
+        Mail::to($emailTo)->send(new SendMailUser($mailData, $assunto));
 
         $request->session()->flash('msg', 'Mensagem enviada com sucesso!');
         return redirect()->route('/');

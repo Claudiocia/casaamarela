@@ -89,7 +89,8 @@ class ContribuisController extends Controller
 
         $emailTo    = $data['email'];
         $nome       = $data['name'];
-        $subject    = 'Contribuição Recebida';
+        $subject    = 'Com sua ajuda construiremos uma Uneb mais plural';
+        $assunto    = 'Recebemos sua contribuição';
         $date       = now();
 
         $mensagem  = "Olá $nome,";
@@ -102,7 +103,7 @@ class ContribuisController extends Controller
         $mensagem .= "<br/>";
 
         $mailData = [
-            'title' => 'Recebemos sua mensagem',
+            'title' => 'Recebemos sua contribuição',
             'sub-title' => $subject,
             'mensagem' => $mensagem,
             'url' => null,
@@ -110,7 +111,7 @@ class ContribuisController extends Controller
             'date' => $date,
         ];
 
-        Mail::to($emailTo)->send(new SendMailUser($mailData));
+        Mail::to($emailTo)->send(new SendMailUser($mailData, $assunto));
 
         $request->session()->flash('msg', 'Mensagem cadastrada com sucesso!');
         return redirect()->back();
