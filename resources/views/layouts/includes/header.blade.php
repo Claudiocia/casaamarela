@@ -7,6 +7,7 @@
 
     <title>{{ config('app.name', 'EspaçoAção') }}</title>
     <meta property="og:image" content="{{asset('site/img/logo_pluripensar_icone_web.png')}}" />
+    <meta property="og:description" content="Um espaço para o debate sobre o ensino superior gratuito e de qualidade."/>
     <meta content="" name="description">
 
     <meta content="" name="keywords">
